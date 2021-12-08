@@ -16,7 +16,8 @@ const prodConfig = {
     new ModuleFederationPlugin({
       name: 'container',
       remotes: {
-        marketing: `marketing@${domain}/marketing/remoteEntry.js`,
+        // Added latest, as these files are pushed in marketing/latest in S3 via marketing.yml
+        marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
       },
       shared: packageJson.dependencies,
     }),
