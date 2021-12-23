@@ -12,6 +12,7 @@ const prodConfig = {
     filename: '[name].[contenthash].js',
     publicPath: '/container/latest/',
   },
+  devtool: 'inline-source-map',
   plugins: [
     new ModuleFederationPlugin({
       name: 'container',
