@@ -4,7 +4,7 @@ import singleSpaVue from 'single-spa-vue'
 import Dashboard from './components/Dashboard';
 
 // Mount function to start up the app.
-const mountx = (el) => {
+const mountp = (el) => {
   const app = createApp(Dashboard);
   app.mount(el);
 };
@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === 'development') {
   const devRoot = document.querySelector('#_dashboard-dev-root');
 
   if (devRoot) {
-    mountx(devRoot);
+    mountp(devRoot);
   }
 }
 

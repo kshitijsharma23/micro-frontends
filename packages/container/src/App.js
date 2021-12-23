@@ -16,7 +16,7 @@ import DashboardLazy from './components/DashboardApp';
 // const DashboardLazy = lazy(() => import('./components/DashboardApp'));
 
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'co',
+  productionPrefix: 'con',
 });
 
 // Doing this as getting access to history is difficult in component using BrowserRouter.
