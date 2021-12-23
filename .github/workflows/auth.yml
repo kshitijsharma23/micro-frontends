@@ -3,7 +3,7 @@ name: deploy-auth
 on:
   push:
     branches:
-      - master
+      - single-spa-poc
     paths:
       - 'packages/auth/**'
       - '.github/workflows/auth.yml'

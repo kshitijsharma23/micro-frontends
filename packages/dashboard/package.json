@@ -10,6 +10,7 @@
     "primeflex": "2.0.0",
     "primeicons": "4.0.0",
     "primevue": "3.0.1",
+    "single-spa-vue": "^2.5.1",
     "vue": "3.0.2"
   },
   "devDependencies": {

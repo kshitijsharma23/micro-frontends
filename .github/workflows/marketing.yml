@@ -3,7 +3,7 @@ name: deploy-marketing
 on:
   push:
     branches:
-      - master
+      - single-spa-poc
     paths:
       - 'packages/marketing/**'
       - '.github/workflows/marketing.yml'

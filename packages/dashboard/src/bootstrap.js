@@ -1,9 +1,10 @@
-import { createApp } from 'vue';
+import { h, createApp } from 'vue';
+import singleSpaVue from 'single-spa-vue'
 
 import Dashboard from './components/Dashboard';
 
 // Mount function to start up the app.
-const mount = (el) => {
+const mountx = (el) => {
   const app = createApp(Dashboard);
   app.mount(el);
 };
@@ -14,10 +15,29 @@ if (process.env.NODE_ENV === 'development') {
   const devRoot = document.querySelector('#_dashboard-dev-root');
 
   if (devRoot) {
-    mount(devRoot);
+    mountx(devRoot);
   }
 }
 
 // Running through container
 // Export mount function
-export { mount };
+// export { mount };
+const lifecycles = singleSpaVue({
+  createApp,
+  appOptions: {
+    render() {
+      return h(Dashboard, {
+        // name: this.name,
+        // mountParcel: this.mountParcel,
+        // singleSpa: this.singleSpa,
+      });
+    },
+    // handleInstance: (app) => {
+    //   app.use
+    // }
+  },
+});
+
+export const bootstrap = lifecycles.bootstrap;
+export const mount = lifecycles.mount;
+export const unmount = lifecycles.unmount;
