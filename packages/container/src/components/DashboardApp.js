@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { registerApplication, start } from 'single-spa';
+// import { registerApplication, start } from 'single-spa';
 
 // import { mount } from 'dashboard/DashboardApp';
 
@@ -9,13 +9,13 @@ const DashboardApp = () => {
   useEffect(() => {
     // mount(ref.current);
 
-    registerApplication(
-      'dashboard',
-      () => import('dashboard/DashboardApp'),
-      location => location.pathname.startsWith('/dashboard'),
-    );
+    // registerApplication(
+    //   'dashboard',
+    //   () => import('dashboard/DashboardApp'),
+    //   location => location.pathname.startsWith('/dashboard'),
+    // );
 
-    start();
+    // start();
   }, []);
 
   return (

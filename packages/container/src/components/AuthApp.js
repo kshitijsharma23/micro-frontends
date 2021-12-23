@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { registerApplication, start } from 'single-spa';
+// import { registerApplication, start } from 'single-spa';
 
 // import { mount } from 'auth/AuthApp';
 
@@ -22,15 +22,6 @@ const AuthApp = ({ onSignIn }) => {
     // });
 
     // history.listen(onParentNavigate);
-
-    registerApplication(
-      'auth',
-      () => import('auth/AuthApp'),
-      location => location.pathname.startsWith('/auth'),
-      { history, onSignIn },
-    );
-
-    start();
   }, []);
 
   return (

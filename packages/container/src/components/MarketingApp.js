@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { registerApplication, start } from 'single-spa';
+// import { registerApplication, start } from 'single-spa';
 
 // import { mount } from 'marketing/MarketingApp';
 
@@ -23,14 +23,18 @@ const MarketingApp = () => {
 
     // history.listen(onParentNavigate);
 
-    registerApplication(
-      'marketing',
-      () => import('marketing/MarketingApp'),
-      location => location.pathname.startsWith('/'),
-      { history },
-    );
+    // registerApplication(
+    //   'marketing',
+    //   () => import('marketing/MarketingApp'),
+    //   location => location.pathname.startsWith('/'),
+    //   { history },
+    // );
 
-    start();
+    // start();
+
+    // return () => {
+    //   unloadApplication('marketing');
+    // }
   }, []);
 
   return (

@@ -17,6 +17,7 @@ const devConfig = {
     // },
     historyApiFallback: true,
   },
+  devtool: 'inline-source-map',
   plugins: [
     new ModuleFederationPlugin({
       name: 'container',

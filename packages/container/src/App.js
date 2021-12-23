@@ -2,13 +2,18 @@ import React, { lazy, Suspense, useState, useEffect } from 'react';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import { StylesProvider, createGenerateClassName } from '@material-ui/core/styles';
 import { createBrowserHistory } from 'history';
+import { registerApplication, start } from 'single-spa';
 
 import Header from './components/Header';
 import Progress from './components/Progress';
 
-const MarketingLazy = lazy(() => import('./components/MarketingApp'));
-const AuthLazy = lazy(() => import('./components/AuthApp'));
-const DashboardLazy = lazy(() => import('./components/DashboardApp'));
+import MarketingLazy from './components/MarketingApp';
+import AuthLazy from './components/AuthApp';
+import DashboardLazy from './components/DashboardApp';
+
+// const MarketingLazy = lazy(() => import('./components/MarketingApp'));
+// const AuthLazy = lazy(() => import('./components/AuthApp'));
+// const DashboardLazy = lazy(() => import('./components/DashboardApp'));
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'co',
@@ -20,6 +25,33 @@ const history = createBrowserHistory();
 
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
+
+  useEffect(() => {
+    registerApplication(
+      'marketing',
+      () => import('marketing/MarketingApp'),
+      location => location.pathname === '/' || location.pathname === '/pricing',
+      { history },
+    );
+
+    registerApplication(
+      'auth',
+      () => import('auth/AuthApp'),
+      location => location.pathname.startsWith('/auth'),
+      {
+        history,
+        onSignIn: () => setIsSignedIn(true),
+      },
+    );
+
+    registerApplication(
+      'dashboard',
+      () => import('dashboard/DashboardApp'),
+      location => location.pathname.startsWith('/dashboard'),
+    );
+
+    start();
+  }, []);
 
   useEffect(() => {
     if (isSignedIn) {
