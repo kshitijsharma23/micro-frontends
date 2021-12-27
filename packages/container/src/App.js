@@ -10,6 +10,7 @@ import Progress from './components/Progress';
 import MarketingLazy from './components/MarketingApp';
 import AuthLazy from './components/AuthApp';
 import DashboardLazy from './components/DashboardApp';
+import OpsApp from './components/OpsApp';
 
 // const MarketingLazy = lazy(() => import('./components/MarketingApp'));
 // const AuthLazy = lazy(() => import('./components/AuthApp'));
@@ -50,6 +51,12 @@ const App = () => {
       location => location.pathname.startsWith('/dashboard'),
     );
 
+    registerApplication(
+      'opsPortal',
+      () => import('opsPortal/OpsApp'),
+      location => location.pathname.startsWith('/ops'),
+    );
+
     start();
   }, []);
 
@@ -73,6 +80,7 @@ const App = () => {
                 {!isSignedIn && <Redirect to="/" />}
                 <DashboardLazy />
               </Route>
+              <Route path="/ops" component={OpsApp} />
               <Route path="/" component={MarketingLazy} />
             </Switch>
           </Suspense>
