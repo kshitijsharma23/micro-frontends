@@ -15,18 +15,11 @@ const prodConfig = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'container',
-      // remotes: {
-      //   // Added latest, as these files are pushed in marketing/latest in S3 via marketing.yml
-      //   auth: `auth@${domain}/auth/latest/remoteEntry.js`,
-      //   marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
-      //   dashboard: `dashboard@${domain}/dashboard/latest/remoteEntry.js`,
-      // },
-      library: { type: 'var', name: 'container' },
       remotes: {
         // Added latest, as these files are pushed in marketing/latest in S3 via marketing.yml
-        auth: 'auth',
-        marketing: 'marketing',
-        dashboard: 'dashboard',
+        auth: `auth@${domain}/auth/latest/remoteEntry.js`,
+        marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
+        dashboard: `dashboard@${domain}/dashboard/latest/remoteEntry.js`,
       },
       shared: packageJson.dependencies,
     }),
