@@ -17,9 +17,9 @@ const prodConfig = {
       name: 'container',
       remotes: {
         // Added latest, as these files are pushed in marketing/latest in S3 via marketing.yml
-        auth: `auth@${domain}/auth/latest/remoteEntry.js`,
-        marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
-        dashboard: `dashboard@${domain}/dashboard/latest/remoteEntry.js`,
+        auth: `auth@/auth/latest/remoteEntry.js`,
+        marketing: `marketing@/marketing/latest/remoteEntry.js`,
+        dashboard: `dashboard@/dashboard/latest/remoteEntry.js`,
       },
       shared: packageJson.dependencies,
     }),
